@@ -17,6 +17,14 @@ export default class TicketRepository {
     return rows.map(this.fromRow);
   }
 
+  async getTicketByToken(token) {
+    const [rows] = await this.db.query("SELECT * FROM tickets WHERE token = ?", [token]);
+    if (!rows || rows.length === 0) {
+      throw new Error("Ticket not found");
+    }
+    return this.fromRow(rows[0]);
+  }
+
   async createTicket(ticket) {
     const { nombre, email, token, usada } = ticket;
     console.log("Creating ticket:", { nombre, email, token, usada });
