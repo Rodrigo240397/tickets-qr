@@ -22,10 +22,10 @@ app.set("layout extractMetas", true)
 // Servir archivos estáticos desde la carpeta "public"
 app.use(express.static('public'))
 // Servir los archivos de Bootstrap como estáticos
-app.use('vendor/bootstrap/css/', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')))
-app.use('vendor/bootstrap/js/', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')))
+app.use('/vendor/bootstrap/css/', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')))
+app.use('/vendor/bootstrap/js/', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')))
 // Servir los archivos de Bootstrap Icons como estáticos
-app.use('vendor/bootstrap-icons/css/', express.static(path.join(__dirname, 'node_modules/bootstrap-icons/font')))
+app.use('/vendor/bootstrap-icons/css/', express.static(path.join(__dirname, 'node_modules/bootstrap-icons/font')))
 
 // Rutas
 app.use("/", ticketsRoutes)
