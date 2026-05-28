@@ -4,7 +4,7 @@ export default class Ticket {
   constructor(nombre, email, token = null, usada = false) {
     this.nombre = nombre;
     this.email = email;
-    this.token = token;
+    this.token = token ?? this.generarToken();
     this.usada = usada;
   }
   

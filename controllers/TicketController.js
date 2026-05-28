@@ -1,3 +1,5 @@
+import Ticket from "../models/Ticket.js"
+
 export default class TicketController {
   constructor(ticketRepository) {
     this.ticketRepository = ticketRepository;
@@ -19,9 +21,9 @@ export default class TicketController {
 
   async createTicket(req, res) {
     try {
-      const { nombre, email, token } = req.body;
-      const newTicket = { nombre, email, token };
-      const ticketId = await this.ticketRepository.createTicket(newTicket);
+      const { nombre, email } = req.body;
+      const ticket = new Ticket(nombre, email);
+      await this.ticketRepository.createTicket(ticket);
       res.status(201).redirect("/tickets");
     } catch (error) {
       console.error("Error al crear ticket:", error);
