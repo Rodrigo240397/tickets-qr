@@ -19,6 +19,7 @@ export default class TicketRepository {
 
   async createTicket(ticket) {
     const { nombre, email, token, usada } = ticket;
+    console.log("Creating ticket:", { nombre, email, token, usada });
     const [result] = await this.db.query(
       "INSERT INTO tickets (nombre, email, token, usada) VALUES (?, ?, ?, ?)",
       [nombre, email, token, usada]

@@ -23,6 +23,7 @@ export default class TicketController {
     try {
       const { nombre, email } = req.body;
       const ticket = new Ticket(nombre, email);
+      ticket.generarToken();
       await this.ticketRepository.createTicket(ticket);
       res.status(201).redirect("/tickets");
     } catch (error) {
