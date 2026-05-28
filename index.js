@@ -2,6 +2,7 @@ import express from 'express'
 import expressLayouts from 'express-ejs-layouts'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import ticketsRoutes from "./routes/tickets-routes.js"
 
 const app = express()
 
@@ -27,9 +28,7 @@ app.use('vendor/bootstrap/js/', express.static(path.join(__dirname, 'node_module
 app.use('vendor/bootstrap-icons/css/', express.static(path.join(__dirname, 'node_modules/bootstrap-icons/font')))
 
 // Rutas
-app.get('/', (req, res) => {
-  res.render('index', { title: 'Inicio' })
-})
+app.use("/", ticketsRoutes)
 
 // Iniciar el servidor
 app.listen(3000, (error) => {
