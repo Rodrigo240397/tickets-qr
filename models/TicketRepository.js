@@ -17,4 +17,16 @@ export default class TicketRepository {
     return rows.map(this.fromRow);
   }
 
+  async createTicket(ticket) {
+    const { nombre, email, token } = ticket;
+    const [result] = await this.db.query(
+      "INSERT INTO tickets (nombre, email, token) VALUES (?, ?, ?)",
+      [nombre, email, token]
+    );
+    if (!result) {
+      throw new Error("Failed to create ticket");
+    }
+    return result.insertId;
+  }
+
 }
