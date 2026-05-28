@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <h2 class="mb-4">Lista de Tickets Disponibles</h2>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Token</th>
+          <th>Usada</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% tickets.forEach(function(ticket) { %>
+        <tr>
+          <td><%= ticket.getNombre() %></td>
+          <td><%= ticket.getEmail()  %></td>
+          <td><%= ticket.getToken()  %></td>
+          <td>
+            <% if ( ticket.getUsada() ) { %>
+            <span class="badge bg-danger">Sí</span>
+            <% } else { %>
+            <span class="badge bg-success">No</span>
+            <% } %>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+</div>
