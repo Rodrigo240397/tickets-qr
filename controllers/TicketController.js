@@ -34,7 +34,7 @@ export default class TicketController {
     }
   }
 
-  async mostrarTicket(req, res) {
+  async showTicket(req, res) {
     try {
       const { token } = req.params;
       const ticket = await this.ticketRepository.getTicketByToken(token);

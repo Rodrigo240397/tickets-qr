@@ -16,6 +16,6 @@ router.get("/", (req, res) => {
 router.get("/tickets", (req, res) => ticketController.getTickets(req, res))
 router.get("/tickets/create", (req, res) => ticketController.showCreateForm(req, res))
 router.post("/tickets/create", (req, res) => ticketController.createTicket(req, res))
-router.get("/tickets/:token", (req, res) => ticketController.mostrarTicket(req, res))
+router.get("/tickets/:token", (req, res) => ticketController.showTicket(req, res))
 
 export default router
