@@ -25,7 +25,10 @@ export default class TicketController {
       const ticket = new Ticket(nombre, email);
       ticket.generarToken();
       await this.ticketRepository.createTicket(ticket);
-      res.status(201).redirect("/tickets");
+      //res.status(201).redirect("/tickets");
+      const qr = await ticket.generarQR();
+      res.render('tickets/mostrar-ticket', { title: "Ticket", ticket,qr })
+
     } catch (error) {
       console.error("Error al crear ticket:", error);
       res.status(500).json({ error: "No se pudo crear el ticket" });
