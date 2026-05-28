@@ -38,4 +38,14 @@ export default class TicketRepository {
     return result.insertId;
   }
 
+  async markTicketAsUsed(token) {
+    const [result] = await this.db.query(
+      "UPDATE tickets SET usada = true WHERE token = ?",
+      [token]
+    );
+    if (!result) {
+      throw new Error("Failed to mark ticket as used");
+    }
+  }
+
 }

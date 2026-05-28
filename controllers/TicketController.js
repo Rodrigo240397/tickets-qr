@@ -48,4 +48,35 @@ export default class TicketController {
       res.status(500).json({ error: "No se pudo mostrar el ticket" });
     }
   }
+
+  async showValidateTicket(req, res) {
+    try {
+      const { token } = req.params;
+      const ticket = await this.ticketRepository.getTicketByToken(token);
+      if (!ticket) {
+        return res.status(404).json({ error: "Ticket no encontrado" });
+      }
+      res.render('tickets/validar-ticket', { title: "Validar Ticket", ticket });
+    } catch (error) {
+      console.error("Error al validar ticket:", error);
+      res.status(500).json({ error: "No se pudo validar el ticket" });
+    }
+  }
+
+  async markTicketAsUsed(req, res) {
+    try {
+      const { token } = req.params;
+      const ticket = await this.ticketRepository.getTicketByToken(token);
+      if (!ticket) {
+        return res.status(404).json({ error: "Ticket no encontrado" });
+      }
+      ticket.marcarUsada();
+      await this.ticketRepository.markTicketAsUsed(token);
+      res.redirect("/tickets");
+    } catch (error) {
+      console.error("Error al marcar ticket como usado:", error);
+      res.status(500).json({ error: "No se pudo marcar el ticket como usado" });
+    }
+  }
+
 }
