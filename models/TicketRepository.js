@@ -1,3 +1,5 @@
+import Ticket from "./Ticket.js"
+
 export default class TicketRepository {
   constructor(db) {
     this.db = db;
