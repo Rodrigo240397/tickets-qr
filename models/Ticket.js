@@ -1,4 +1,4 @@
-class Ticket {
+export default class Ticket {
   constructor(nombre, email, token,usada) {
     this.nombre = nombre;
     this.email = email;
@@ -14,7 +14,7 @@ class Ticket {
   getEmail() {
     return this.email;
   } 
-  
+
   getToken() {
     return this.token;
   }

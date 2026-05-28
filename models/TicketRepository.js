@@ -1,4 +1,4 @@
-class TicketRepository {
+export default class TicketRepository {
   constructor(db) {
     this.db = db;
   }
