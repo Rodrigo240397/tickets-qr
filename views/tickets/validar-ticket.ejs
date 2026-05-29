@@ -1,0 +1,20 @@
+<main class="container mt-5">
+  <h2 class="mb-4">Validar Ticket</h2>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title mb-3">Nombre: <%= ticket.getNombre() %></h5>
+      <p class="card-text mb-2">Email: <%= ticket.getEmail() %></p>
+      <p class="card-text mb-2">Token: <%= ticket.getToken() %></p>
+      <p class="card-text mb-2">Usada: <%= ticket.getUsada() ? "Si" : "No" %></p>
+      <% if (ticket.esValido()) { %>
+        <form action="/validate/<%= ticket.getToken() %>" method="POST">
+          <button type="submit" class="btn btn-success">Marcar como Usada</button>
+        </form>
+      <% } else { %>
+        <div class="alert alert-danger" role="alert">
+          Este ticket no es válido para ser usado.
+        </div>
+      <% } %>
+    </div>
+  </div>
+</main>

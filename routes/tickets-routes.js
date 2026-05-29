@@ -17,5 +17,7 @@ router.get("/tickets", (req, res) => ticketController.getTickets(req, res))
 router.get("/tickets/create", (req, res) => ticketController.showCreateForm(req, res))
 router.post("/tickets/create", (req, res) => ticketController.createTicket(req, res))
 router.get("/tickets/:token", (req, res) => ticketController.showTicket(req, res))
+router.get("/validate/:token", (req, res) => ticketController.showValidateTicket(req, res))
+router.post("/validate/:token", (req, res) => ticketController.markTicketAsUsed(req, res))
 
 export default router

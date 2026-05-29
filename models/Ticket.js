@@ -9,6 +9,11 @@ export default class Ticket {
     this.usada = usada;
   }
 
+  // Un ticket es valido cuando tiene token y no ha sido usado
+  esValido() {
+    return this.token && !this.usada;
+  }
+  
   async generarQR() {
     const text = this.urlValidacion();
     let qr = await generateQR(text);
